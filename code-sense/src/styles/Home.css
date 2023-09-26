@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css?family=Kanit:900");
+
+h1 {
+  color: #fff;
+  font-family: "Kanit";
+  font-size: 60px;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 -1px 3px rgba(0, 0, 0, 0.2),
+    0 15px 15px rgba(0, 0, 0, 0.5);
+}
+
+.codes {
+  /* display: flex;
+    flex-direction: column; */
+
+  justify-self: center;
+  width: 500px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  height: 65vh;
+  margin-top: 15vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* padding: 6vh 0; */
+}
+
+.logout {
+  margin-left: 90%;
+  margin-top: 1%;
+  border-radius: 5rem;
+}
+.logout:hover {
+  background-color: red;
+  opacity: 0.9;
+}
+
+.heading-div {
+  margin: 0;
+  padding: 0;
+  max-height: 0vh;
+}
+
+.heading {
+  text-align: center;
+  padding-top: 3vh;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  word-spacing: 1rem;
+  margin: auto;
+  color: white;
+
+  color: #fff;
+  font-family: "Kanit";
+  font-size: 60px;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  /* top: 50%; */
+  top: 4%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 -1px 3px rgba(0, 0, 0, 0.2),
+    0 15px 15px rgba(0, 0, 0, 0.5);
+}
+
+textarea {
+  border-radius: 5px;
+  resize: none;
+  padding: 5px;
+  margin-bottom: 3%;
+}
+.codes-submit label {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 2%;
+  font-weight: bolder;
+
+  /* padding-bottom: 2%; */
+}
+.left-side-buttons {
+  display: flex;
+  justify-content: center;
+}
+.left-side-buttons button {
+  margin-left: 1rem;
+}
+.reply {
+  height: 400px;
+  /* width: 300px; */
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 2%;
+}
+.ans {
+  z-index: 100;
+  color: black;
+}
