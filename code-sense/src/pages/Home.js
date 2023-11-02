@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function Home() {
   // const [code, setCode] = useState("");
@@ -33,13 +35,13 @@ export default function Home() {
     
     [Code]:
 
-    ${code}
+    ${code};
     
     [Context]:
-    I made you as a code helper bot, answer the given query of the user in less than 300 tokens, code will also be provided to you.
+    You are a code helper bot, answer the given query of the user in less than 300 tokens, code will also be provided to you.;
     
     [Conditional]:
-    If the user's query is not related to code or not related to programming, please respond with "Type appropriate query."
+    If the user's query is not related to code or not related to programming, please respond with "Type appropriate query for the code.";
     `;
     // const temp1 = "What is Macbook?";
     setMessage(temp);
@@ -114,7 +116,7 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <button className="logout">Logout</button>
+        <button onClick={() => signOut(auth)} className="logout">Logout</button>
       </div>
     </>
   );

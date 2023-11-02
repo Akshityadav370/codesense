@@ -14,7 +14,7 @@ export default function Login() {
 
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
-    return <Navigate to="/register" />;
+    return <Navigate to="/" />;
   }
 
   const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ export default function Login() {
         <HeroLogo className="hero_img" />
       </div>
       <div className="wrapper">
-        <form action="/">
+        <form onSubmit={handleSubmit}>
           <h2>Login</h2>
           <div className="input-field">
             <input type="email" required />
