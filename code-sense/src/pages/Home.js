@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import he from "he";
 
 export default function Home() {
   // const [code, setCode] = useState("");
@@ -30,22 +31,32 @@ export default function Home() {
 
     // setCode(code);
     // setQuery(query);
+    // const temp = `
+    // [User's Query]: ${query};
+
+    // [Code]:
+
+    // ${code};
+
+    // [Context]:
+    // You are a code helper bot, answer the given query of the user in less than 300 tokens, code will also be provided to you.;
+
+    // [Conditional]:
+    // If the user's query is not related to code or not related to programming, please respond with "Type appropriate query for the code.";
+    // `;
     const temp = `
     [User's Query]: ${query};
-    
-    [Code]:
 
-    ${code};
-    
-    [Context]:
-    You are a code helper bot, answer the given query of the user in less than 300 tokens, code will also be provided to you.;
-    
-    [Conditional]:
-    If the user's query is not related to code or not related to programming, please respond with "Type appropriate query for the code.";
-    `;
+[Code]:
+
+${code};
+
+[Context]:
+You are a code helper bot. Please answer the given query of the user only if it is related to programming or code. If the user's query is not related to code or programming, please respond with "Type appropriate query for the code."
+`;
     // const temp1 = "What is Macbook?";
     setMessage(temp);
-    console.log(message);
+    // console.log(message);
     setAnalyse(true);
     // console.log(code, query);
   };
@@ -57,20 +68,21 @@ export default function Home() {
         options
       );
       const data = await response.json();
-      console.log("####################Home.js");
-      console.log("line1", data, ans);
-      
+
       if (data.error) {
         setAns(data.error.message);
-        console.log(data.error.message);
       } else {
-        console.log(data.choices[0].message);
-        const sentence = (data.choices[0].message.content).replace(/\b\n\b/g, "<br/>");
-        console.log(sentence);
-        setAns(sentence);
+        // const sentence = (data.choices[0].message.content).replace(/\b\n\b/g, "<br/>");
+        // const contentWithLineBreaks = data.choices[0].message.content.replace(
+        //   /\n/g,
+        //   "<br/>"
+        // );
+        const content = data.choices[0].message.content;
+
+        setAns(he.decode(content));
+        // setAns(contentWithLineBreaks);
       }
-      console.log("line3", ans);
-      console.log("line2", data, ans);
+
       setAnalyse(false);
     } catch (error) {
       console.log(ans, error);
@@ -112,11 +124,33 @@ export default function Home() {
           </form>
         </div>
         <div className="codes">
-          <div className="reply">{ans}</div>
+          {analyse ? (
+            // Show a loading indicator while waiting for the response
+            <div className="loader">Loading...</div>
+          ) : (
+            // Display the response or your textarea when not loading
+            <textarea
+              className="reply-textarea"
+              value={ans}
+              rows={"30"}
+              cols={"55"}
+              readOnly
+            />
+          )}
+          {/* <textarea
+            className="reply-textarea"
+            value={ans}
+            rows={"30"}
+            cols={"55"}
+            readOnly
+          /> */}
+          {/* <div className="reply" dangerouslySetInnerHTML={{ __html: ans }} /> */}
         </div>
       </div>
       <div>
-        <button onClick={() => signOut(auth)} className="logout">Logout</button>
+        <button onClick={() => signOut(auth)} className="logout">
+          Logout
+        </button>
       </div>
     </>
   );
