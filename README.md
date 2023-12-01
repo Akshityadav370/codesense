@@ -20,4 +20,11 @@ Axios
 HTML and CSS
 Version Control (Git) and Deployment
 
+## Credentials to test
+Sample user: 
+
+arjun@gmail.com
+123456
+
+
 
